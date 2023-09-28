@@ -1,0 +1,14 @@
+{
+  "/mfe1": {
+    "originDomain": "d3aoaj4kd6mi6b.cloudfront.net", 
+    "uri": "/pages/mfe1/index.html"
+  },
+  "/mfe2": {
+    "originDomain": "d3aoaj4kd6mi6b.cloudfront.net", 
+    "uri": "/pages/mfe2/index.html"
+  },
+  "/mfe3": {
+    "originDomain": "d3aoaj4kd6mi6b.cloudfront.net", 
+    "uri": "/pages/mfe3/index.html"
+  }
+}
