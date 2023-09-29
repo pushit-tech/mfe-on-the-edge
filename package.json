@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "src"
+    "packages/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
