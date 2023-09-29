@@ -16,12 +16,12 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            mfe: 
-              - 'packages/mfe-${{ inputs.mfe_name }}/**' 
+      # - uses: dorny/paths-filter@v2
+      #   id: changes
+      #   with:
+      #     filters: |
+      #       mfe: 
+      #         - 'packages/mfe-${{ inputs.mfe_name }}/**' 
 
       - name: Checkout code
         uses: actions/checkout@v2

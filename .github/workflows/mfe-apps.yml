@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "packages/pages/mfe-*/**"
+      - "packages/pages/**"
 
 jobs:
   pokemon:
