@@ -10,5 +10,9 @@
   "/mfe3": {
     "originDomain": "d3aoaj4kd6mi6b.cloudfront.net", 
     "uri": "/pages/mfe3/index.html"
+  },
+  "/mfe5": {
+    "originDomain": "d3aoaj4kd6mi6b.cloudfront.net", 
+    "uri": "/pages/mfe4/index.html"
   }
 }
