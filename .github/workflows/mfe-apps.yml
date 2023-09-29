@@ -1,0 +1,26 @@
+name: Upload MFE to S3
+run-name: 🍕 ${{ github.actor }} is uploading a MFE module
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/pages/mfe-**"
+
+jobs:
+  pokemon:
+    uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+    with:
+      mfe_name: "pokemon"
+    secrets: inherit
+  rick-morty:
+    uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+    with:
+      mfe_name: "rick-morty"
+    secrets: inherit
+  shell:
+    uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+    with:
+      mfe_name: "shell"
+    secrets: inherit
