@@ -7,7 +7,7 @@ import {
 } from "./utils/fetch-routes.js";
 
 let frontEndCatalog = null;
-export const CDN_CATALOG_URI = "https://d3aoaj4kd6mi6b.cloudfront.net/routes/frontend-catalog.json";
+export const CDN_CATALOG_URI = "https://d1wub6s1ympoc5.cloudfront.net/routes/frontend-catalog.json";
 
 export const handler = async (event) => {
   let request = event.Records[0].cf.request;

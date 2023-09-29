@@ -2,9 +2,14 @@ name: Updating lambda edge function to aws
 run-name: ⚙️ ${{ github.actor }} is uploading lambda@edge and infrastructure to aws
 
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - 'packages/routing-edge/src/**'
+      - 'packages/routing-edge/template.yaml'
+      - '.github/workflows/sam-pipeline.yml'
+      - '!packages/routing-edge/src/routes/frontend-catalog.json'
     branches:
-      - main 
+      - main
 
 jobs:
   build-deploy-sam:
