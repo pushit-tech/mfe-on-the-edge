@@ -2,7 +2,7 @@ import { expect } from "chai";
 import LambdaTester from "lambda-tester";
 import lambdaEventMock from "lambda-event-mock";
 import nock from "nock";
-import { handler, CDN_URI } from "../index.js";
+import { handler, CDN_CATALOG_URI } from "../index.js";
 import { fetchLocalJSON } from "../utils/fetch-routes.js";
 
 const frontEndCatalogMock = {
@@ -43,9 +43,9 @@ function createEvent() {
       s3: {
         authMethod: "none",
         customHeaders: {
-          cdn_uri: [
+          CDN_CATALOG_URI: [
             {
-              key: "CDN_URI",
+              key: "CDN_CATALOG_URI",
               value: "d1zy0jbltv73es.cloudfront.net",
             },
           ],
@@ -62,7 +62,7 @@ afterEach(() => {
 
 describe("Testing request with cloud catalog success", () => {
   beforeEach(() => {
-    nock(CDN_URI).get("/").reply(200, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("/").reply(200, frontEndCatalogMock);
   });
 
   describe("should return the same request when", () => {
@@ -99,7 +99,7 @@ describe("Testing request with cloud catalog success", () => {
     });
 
     it("the lambda event doesn't have cloud formation structure ", async () => {
-      nock(CDN_URI).get("/").reply(404, frontEndCatalogMock);
+      nock(CDN_CATALOG_URI).get("/").reply(404, frontEndCatalogMock);
       await LambdaTester(handler)
         .event({ Records: [{ cf: { request: {} } }] })
         .expectResult((finalRequest) => {
@@ -139,7 +139,7 @@ describe("Testing front-end with cloud catalog error", () => {
   let localCatalog;
   let catalogItem;
   beforeEach(async () => {
-    nock(CDN_URI).get("/").reply(404, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("/").reply(404, frontEndCatalogMock);
     localCatalog = await fetchLocalJSON("../routes/frontend-catalog.json");
     catalogItem = Object.keys(localCatalog)[0];
   });
@@ -167,7 +167,7 @@ describe("Testing front-end with cloud catalog error", () => {
 describe("Testing request content", () => {
   let catalogItem;
   beforeEach(() => {
-    nock(CDN_URI).get("/").reply(200, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("/").reply(200, frontEndCatalogMock);
     catalogItem = Object.keys(frontEndCatalogMock)[0];
   });
   it("the request must have a valid cf host structure", async () => {

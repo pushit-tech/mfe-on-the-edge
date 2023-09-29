@@ -34,14 +34,43 @@ Resources:
             Resource:
               - !Join ['', ['arn:aws:s3:::', !Ref S3Bucket, "/*"]]
 
-  CFDistribution:
+  CFDistributionForStatics:
       Type: AWS::CloudFront::Distribution
       DependsOn:
         - CloudFrontOAI
       Properties:
         DistributionConfig:
           Enabled: true
-          Comment: !Sub '${BucketName} cloudfront distribution for template application that shows mfe on the lambda@edge'
+          Comment: !Sub '${BucketName} serves to access static files from edge'
+          PriceClass: PriceClass_100
+          Origins:
+            - DomainName: !GetAtt S3Bucket.RegionalDomainName
+              Id: !Ref S3Bucket
+              S3OriginConfig:
+                OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOAI}"
+          DefaultCacheBehavior:
+            ViewerProtocolPolicy: redirect-to-https
+            TargetOriginId: !Ref S3Bucket
+            CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # CachingOptimized
+            OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf # CORS-S3Origin
+            ForwardedValues: 
+              QueryString: false 
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+          ViewerCertificate:
+            CloudFrontDefaultCertificate: true
+            MinimumProtocolVersion: 'TLSv1.2_2021'
+
+  CFDistributionForTheEdge:
+      Type: AWS::CloudFront::Distribution
+      DependsOn:
+        - CloudFrontOAI
+      Properties:
+        DistributionConfig:
+          Enabled: true
+          Comment: !Sub '${BucketName} is the entry to be handled by lambda@edge'
           DefaultRootObject: index.html
           PriceClass: PriceClass_100
           CustomErrorResponses:

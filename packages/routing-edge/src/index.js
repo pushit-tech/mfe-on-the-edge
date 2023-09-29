@@ -7,7 +7,7 @@ import {
 } from "./utils/fetch-routes.js";
 
 let frontEndCatalog = null;
-export const CDN_URI = "https://d3aoaj4kd6mi6b.cloudfront.net";
+export const CDN_CATALOG_URI = "https://d3aoaj4kd6mi6b.cloudfront.net/routes/frontend-catalog.json";
 
 export const handler = async (event) => {
   let request = event.Records[0].cf.request;
@@ -20,7 +20,7 @@ export const handler = async (event) => {
   const catalog = await getFrontendCatalog();
   request = mapRequestToCloudfrontByCatalog(request, catalog);
 
-  myLog.info(`\n >>> Final Requests >> `, JSON.stringify(request));
+  myLog.info(`\n <<< Final Requests`, JSON.stringify(request));
   return request;
 };
 
@@ -29,7 +29,7 @@ async function getFrontendCatalog() {
     return frontEndCatalog;
   }
   frontEndCatalog =
-    await fetchCatalogFile(CDN_URI) ||
+    await fetchCatalogFile(CDN_CATALOG_URI) ||
     fetchLocalJSON("../routes/frontend-catalog.json");
   return frontEndCatalog;
 }
