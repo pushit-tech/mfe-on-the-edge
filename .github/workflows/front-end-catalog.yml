@@ -5,8 +5,8 @@ on:
     branches:
       - main 
     paths:
-      - ./packages/routing-edge/src/routes/frontend-catalog.json
-      - ./.github/workflows/front-end-catalog.yml
+      - 'packages/routing-edge/src/routes/frontend-catalog.json'
+      - '.github/workflows/front-end-catalog.yml'
 
 jobs:
   upload-to-s3:

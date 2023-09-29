@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - ./packages/pages/**
-      - ./.github/workflows/static-pages.yml
+      - 'packages/pages/**''
+      - '.github/workflows/static-pages.yml'
 
 jobs:
   upload-to-s3:
