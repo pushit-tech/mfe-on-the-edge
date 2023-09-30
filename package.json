@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "npx lerna run test --stream",
-    "dev": "npx lerna run dev --stream"
+    "dev": "npx lerna run dev --stream",
+    "build": "npx lerna run build --stream"
   },
   "engines": {
     "node": "18.0.0"
