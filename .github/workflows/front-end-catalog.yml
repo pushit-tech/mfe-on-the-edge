@@ -5,18 +5,41 @@ on:
     branches:
       - main 
     paths:
-      - 'packages/mfe-shell/importmaps.json'
       - 'packages/routing-edge/src/routes/frontend-catalog.json'
+      - 'packages/mfe-shell/importmaps.json'
       - '.github/workflows/front-end-catalog.yml'
 
 jobs:
-    edge-routes:
-        uses: "./.github/workflows/_reusable-uplad-file-s3.yml"
-        with:
-          file_to_upload: "packages/routing-edge/src/routes/frontend-catalog.json"
-        secrets: inherit
-    shell-routes:
-      uses: "./.github/workflows/_reusable-uplad-file-s3.yml"
+  upload-edge-catalog:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        file_to_upload: "packages/mfe-shell/importmaps.json"
-      secrets: inherit
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: Uploading catalog to S3
+      run: |
+        cd ./packages/routing-edge/src/routes
+        aws s3 cp ./frontend-catalog.json s3://${{vars.S3_BUCKET_NAME}}/routes/
+        aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/routes/*"
+
+  upload-shell-catalog:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: Uploading catalog to S3
+      run: |
+        cd ./packages/mfe-shell
+        aws s3 cp ./importmaps.json s3://${{vars.S3_BUCKET_NAME}}/routes/
+        aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/routes/*"
