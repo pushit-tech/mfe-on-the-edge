@@ -25,9 +25,10 @@ export const handler = async (event) => {
 };
 
 async function getFrontendCatalog() {
-  if (frontEndCatalog) {
-    return frontEndCatalog;
-  }
+  //This lines are commented for example purposes, uncomment them to optimize requests
+  // if (frontEndCatalog) {
+  //   return frontEndCatalog;
+  // }
   frontEndCatalog =
     await fetchCatalogFile(CDN_CATALOG_URI) ||
     fetchLocalJSON("../routes/frontend-catalog.json");
