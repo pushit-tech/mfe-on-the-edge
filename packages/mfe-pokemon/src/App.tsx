@@ -8,6 +8,17 @@ function App() {
 
   return (
     <>
+      <nav className="bg-gray-800 text-white p-4">
+        <a href="/shell"className="text-blue-500 hover:underline focus:underline focus:outline-none">Marvel</a>
+        <span className="mx-2 text-gray-400">|</span>
+        <a href="/shell/one-pice"className="text-blue-500 hover:underline focus:underline focus:outline-none">One Piece</a>
+        <span className="mx-2 text-gray-400">|</span>
+        <a href="/edge/pokemon" className="text-yellow-500 hover:underline focus:underline focus:outline-none">edge pokemon</a>
+        <span className="mx-2 text-gray-400">|</span>
+        <a href="/edge/rick-morty" className="text-yellow-500 hover:underline focus:underline focus:outline-none">edge rick-morty</a>
+        <span className="mx-2 text-gray-400">|</span>
+        <a href="/edge/vanilla" className="text-yellow-500 hover:underline focus:underline focus:outline-none">edge vanilla</a>
+      </nav>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
