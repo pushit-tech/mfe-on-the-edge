@@ -14,23 +14,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - uses: dorny/paths-filter@v2
-      id: changes
-      with:
-        filters: |
-          mfe: 
-            - '${{inputs.file_to_upload}}'
-
     - name: Set up AWS CLI
-      if: steps.changes.outputs.mfe == 'true'
       uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Uploading catalog to S3
-      if: steps.changes.outputs.mfe == 'true'
       run: |
+        pwd 
+        ls
         aws s3 sync ${{ inputs.file_to_upload }} s3://${{vars.S3_BUCKET_NAME}}/routes/
         aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/routes/*"
         
