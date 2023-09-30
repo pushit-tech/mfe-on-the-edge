@@ -9,6 +9,11 @@ on:
       - "packages/mfe-*/**"
 
 jobs:
+  shell:
+    uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+    with:
+      mfe_name: "shell"
+    secrets: inherit
   pokemon:
     uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
     with:
@@ -19,13 +24,13 @@ jobs:
     with:
       mfe_name: "rick-morty"
     secrets: inherit
-  shell:
-    uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
-    with:
-      mfe_name: "shell"
-    secrets: inherit
-  store:
+  one-pice:
       uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
       with:
-        mfe_name: "store"
+        mfe_name: "one-pice"
+      secrets: inherit
+  marvel:
+      uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+      with:
+        mfe_name: "marvel"
       secrets: inherit

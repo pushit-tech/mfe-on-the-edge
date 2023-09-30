@@ -1,7 +1,7 @@
 {
-  "name": "@mfe/root-config",
+  "name": "shell-spa",
   "scripts": {
-    "start": "webpack serve --port 9000 --env isLocal",
+    "dev": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js",
     "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
     "format": "prettier --write .",

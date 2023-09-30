@@ -41,17 +41,20 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
   <!-- Add your organization's prod import map URL to this script's src  -->
-  <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
   <% if (isLocal) { %>
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
+        "@mfe/marvel": "https://localhost:8089/js/main.js",
+        "@mfe/one-pice": "https://localhost:8090/js/main.js",
         "@mfe/root-config": "//localhost:9000/mfe-root-config.js"
       }
     }
   </script>
+  <% } %>
+  <% } else { %>
+      <script type="systemjs-importmap" src="https://d1wub6s1ympoc5.cloudfront.net/routes/importmap.json"></script>
   <% } %>
 
   <!--
@@ -76,6 +79,7 @@
   </noscript>
   <script>
     System.import('@mfe/root-config');
+
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>

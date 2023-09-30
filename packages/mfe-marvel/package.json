@@ -1,0 +1,23 @@
+{
+  "name": "marvel",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently  \"vite build --watch\" \"vite preview\" ",
+    "build": "vite build --base=$BASE_PATH",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "single-spa-vue": "^2.5.1",
+    "systemjs-webpack-interop": "^2.3.7",
+    "vue": "^3.3.4",
+    "vue-cli-plugin-single-spa": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "concurrently": "^8.2.1",
+    "vite": "^4.4.5"
+  }
+}

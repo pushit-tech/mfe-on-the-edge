@@ -3,9 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div>
-    <h1> Thi is my store </h1>
-  </div>
+  <h1>Marvel</h1>
 </template>
 
 <style scoped>

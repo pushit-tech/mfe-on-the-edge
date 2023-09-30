@@ -1,4 +1,5 @@
 import { registerApplication, start } from "single-spa";
+
 import {
   constructApplications,
   constructRoutes,
@@ -17,4 +18,5 @@ const layoutEngine = constructLayoutEngine({ routes, applications });
 
 applications.forEach(registerApplication);
 layoutEngine.activate();
+
 start();
