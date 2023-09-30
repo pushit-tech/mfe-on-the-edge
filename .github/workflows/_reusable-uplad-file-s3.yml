@@ -31,6 +31,6 @@ jobs:
     - name: Uploading catalog to S3
       if: steps.changes.outputs.mfe == 'true'
       run: |
-        aws s3 cp ${{ inputs.file_to_upload }} s3://${{vars.S3_BUCKET_NAME}}/routes/
+        aws s3 sync ${{ inputs.file_to_upload }} s3://${{vars.S3_BUCKET_NAME}}/routes/
         aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/routes/*"
         

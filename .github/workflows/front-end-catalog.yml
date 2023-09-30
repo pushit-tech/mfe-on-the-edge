@@ -5,18 +5,18 @@ on:
     branches:
       - main 
     paths:
-      - 'packages/mfe-shell-spa/importmaps.json'
+      - 'packages/mfe-shell/importmaps.json'
       - 'packages/routing-edge/src/routes/frontend-catalog.json'
       - '.github/workflows/front-end-catalog.yml'
 
 jobs:
-    shell:
+    edge-routes:
         uses: "./.github/workflows/_reusable-uplad-file-s3.yml"
         with:
           file_to_upload: "packages/routing-edge/src/routes/frontend-catalog.json"
         secrets: inherit
-    pokemon:
+    shell-routes:
       uses: "./.github/workflows/_reusable-uplad-file-s3.yml"
       with:
-        file_to_upload: "packages/mfe-shell-spa/importmaps.json"
+        file_to_upload: "packages/mfe-shell/importmaps.json"
       secrets: inherit
