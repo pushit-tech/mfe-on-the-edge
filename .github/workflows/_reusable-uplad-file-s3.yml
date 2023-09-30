@@ -19,7 +19,7 @@ jobs:
       with:
         filters: |
           mfe: 
-            - '${{ inputs.file_to_upload }}'
+            - '${{inputs.file_to_upload}}'
 
     - name: Set up AWS CLI
       if: steps.changes.outputs.mfe == 'true'

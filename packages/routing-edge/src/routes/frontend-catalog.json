@@ -21,6 +21,7 @@
   },
   "/shell": {
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
-    "uri": "/mfe/shell/index.html"
+    "uri": "/mfe/shell/index.html",
+    "metadata" : {}
   }
 }
