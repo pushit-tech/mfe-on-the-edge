@@ -1,10 +1,9 @@
-<single-spa-router >
-
-  <nav>
-    <div>
-      <a href="/shell" onclick="singleSpaNavigate(event);">Marvel</a> | <a href="/shell/one-pice" onclick="singleSpaNavigate(event);">One Pice</a>
-    </div>
-  </nav>
+<single-spa-router>
+  <nav class="bg-gray-800 text-white p-4">
+    <a href="/shell" onclick="singleSpaNavigate(event);" class="text-blue-500 hover:underline focus:underline focus:outline-none">Marvel</a>
+    <span class="mx-2 text-gray-400">|</span>
+    <a href="/shell/one-pice" onclick="singleSpaNavigate(event);" class="text-yellow-500 hover:underline focus:underline focus:outline-none">One Piece</a>
+</nav>
 
   <main>
     <route path="shell">
