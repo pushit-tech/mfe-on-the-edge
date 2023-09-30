@@ -1,17 +1,17 @@
-<single-spa-router>
+<single-spa-router >
 
   <nav>
     <div>
-      <a href="/" onclick="singleSpaNavigate(event);">Marvel</a> | <a href="/one-pice" onclick="singleSpaNavigate(event);">One Pice</a>
+      <a href="/shell" onclick="singleSpaNavigate(event);">Marvel</a> | <a href="/shell/one-pice" onclick="singleSpaNavigate(event);">One Pice</a>
     </div>
   </nav>
 
   <main>
     <route default>
-      <application name="@mfe/marvel"></application>
+      <application name="@mfe/marvel" props="baseUrl"></application>
     </route>
     <route path="one-pice">
-      <application name="@mfe/one-pice"></application>
+      <application name="@mfe/one-pice" props="baseUrl"></application>
     </route>
   </main>
 </single-spa-router>
