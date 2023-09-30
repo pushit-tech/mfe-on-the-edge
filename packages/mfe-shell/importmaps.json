@@ -3,6 +3,6 @@
     "@mfe/marvel": "https://d1wub6s1ympoc5.cloudfront.net/mfe/marvel/js/main.js",
     "@mfe/one-pice": "https://d1wub6s1ympoc5.cloudfront.net/mfe/one-pice/js/main.js",
     "@mfe/rick-morty": "https://d1wub6s1ympoc5.cloudfront.net/mfe/rick-morty/main.js",
-    "@mfe/root-config": "https://d1wub6s1ympoc5.cloudfront.net/mfe/shell-app/mfe-root-config.js"
+    "@mfe/root-config": "https://d1wub6s1ympoc5.cloudfront.net/mfe/shell/mfe-root-config.js"
   }
 }

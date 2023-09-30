@@ -15,9 +15,9 @@
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
     "uri": "/mfe/pokemon/index.html"
   },
-  "/edge/store": {
+  "/edge/one-pice": {
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
-    "uri": "/mfe/store/index.html"
+    "uri": "/mfe/one-pice/index.html"
   },
   "/shell": {
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 

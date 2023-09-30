@@ -1,5 +1,5 @@
 {
-  "name": "shell-spa",
+  "name": "shell",
   "scripts": {
     "dev": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js",
