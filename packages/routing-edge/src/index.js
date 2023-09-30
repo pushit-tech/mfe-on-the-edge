@@ -25,7 +25,7 @@ export const handler = async (event) => {
 };
 
 async function getFrontendCatalog() {
-  //This lines are commented for example purposes, uncomment them to optimize requests
+  //This lines are commented for example purposes, uncomment them to use the CDN
   // if (frontEndCatalog) {
   //   return frontEndCatalog;
   // }
