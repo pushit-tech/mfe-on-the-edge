@@ -10,7 +10,7 @@ function findCatalogItemByCFuri(catalog = {}, CFuri = "") {
     isCloudfrontUriInCatalog(CFuri, catalogUrl)
   );
 
-  const isDisabled = catalog[key].isDisabled;
+  const isDisabled = catalog[key]?.isDisabled;
 
   return isDisabled ? null : catalog[key];
 }

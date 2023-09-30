@@ -8,7 +8,7 @@ import { fetchLocalJSON } from "../utils/fetch-routes.js";
 const frontEndCatalogMock = {
   "/index.html": {
     originDomain: "d1zy0jbltv73es.cloudfront.net", 
-    uri: "/default/index.html",
+    uri: "/default/index.html"
   },
   "/mfe1": {
     originDomain: "d1zy0jbltv73es.cloudfront.net", 
