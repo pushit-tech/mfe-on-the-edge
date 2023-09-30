@@ -1,24 +1,50 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<script setup></script>
 
 <template>
-  <div>
-    <h1>One Pice</h1>
+  <div class="coming-soon-container">
+    <div class="logo">ONE-PICE</div>
+    <h1>Coming Soon</h1>
+    <div class="countdown">
+      <p>Our website is under construction.</p>
+      <p>Stay tuned for something amazing!</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
+body {
+  background-color: #f0f0f0;
+  font-family: "Arial", sans-serif;
+}
+.coming-soon-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  font-size: 3rem;
+  color: #ff3366;
+  margin-bottom: 1rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 1rem 0;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.countdown {
+  font-size: 2rem;
+  color: #666;
+  margin: 1rem 0;
+}
+.message {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 1rem 0;
 }
 </style>
