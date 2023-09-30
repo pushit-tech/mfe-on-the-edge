@@ -7,11 +7,13 @@
   </nav>
 
   <main>
-    <route default>
-      <application name="@mfe/marvel" props="baseUrl"></application>
-    </route>
-    <route path="one-pice">
-      <application name="@mfe/one-pice" props="baseUrl"></application>
+    <route path="shell">
+      <route path="one-pice">
+        <application name="@mfe/one-pice" props="baseUrl"></application>
+      </route>
+      <route path="marver">
+        <application name="@mfe/marvel" props="baseUrl"></application>
+      </route>
     </route>
   </main>
 </single-spa-router>
