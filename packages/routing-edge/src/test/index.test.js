@@ -6,6 +6,10 @@ import { handler, CDN_CATALOG_URI } from "../index.js";
 import { fetchLocalJSON } from "../utils/fetch-routes.js";
 
 const frontEndCatalogMock = {
+  "/index.html": {
+    originDomain: "d1zy0jbltv73es.cloudfront.net", 
+    uri: "/default/index.html",
+  },
   "/mfe1": {
     originDomain: "d1zy0jbltv73es.cloudfront.net", 
     uri: "/pages/mfe1/latest/index.html",
@@ -62,7 +66,7 @@ afterEach(() => {
 
 describe("Testing request with cloud catalog success", () => {
   beforeEach(() => {
-    nock(CDN_CATALOG_URI).get("/").reply(200, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("").reply(200, frontEndCatalogMock);
   });
 
   describe("should return the same request when", () => {
@@ -99,7 +103,7 @@ describe("Testing request with cloud catalog success", () => {
     });
 
     it("the lambda event doesn't have cloud formation structure ", async () => {
-      nock(CDN_CATALOG_URI).get("/").reply(404, frontEndCatalogMock);
+      nock(CDN_CATALOG_URI).get("").reply(404, frontEndCatalogMock);
       await LambdaTester(handler)
         .event({ Records: [{ cf: { request: {} } }] })
         .expectResult((finalRequest) => {
@@ -132,6 +136,17 @@ describe("Testing request with cloud catalog success", () => {
           );
         });
     });
+
+    it("the request uri is exactly contained on the cloud catalog index.html", async function () {
+      const event = createEvent().uri("/index.html").build();
+      await LambdaTester(handler)
+        .event(event)
+        .expectResult((finalRequest) => {
+          expect(finalRequest.uri).to.equal(
+            frontEndCatalogMock["/index.html"].uri
+          );
+        });
+    });
   });
 });
 
@@ -139,7 +154,7 @@ describe("Testing front-end with cloud catalog error", () => {
   let localCatalog;
   let catalogItem;
   beforeEach(async () => {
-    nock(CDN_CATALOG_URI).get("/").reply(404, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("").reply(404, frontEndCatalogMock);
     localCatalog = await fetchLocalJSON("../routes/frontend-catalog.json");
     catalogItem = Object.keys(localCatalog)[0];
   });
@@ -167,7 +182,7 @@ describe("Testing front-end with cloud catalog error", () => {
 describe("Testing request content", () => {
   let catalogItem;
   beforeEach(() => {
-    nock(CDN_CATALOG_URI).get("/").reply(200, frontEndCatalogMock);
+    nock(CDN_CATALOG_URI).get("").reply(200, frontEndCatalogMock);
     catalogItem = Object.keys(frontEndCatalogMock)[0];
   });
   it("the request must have a valid cf host structure", async () => {

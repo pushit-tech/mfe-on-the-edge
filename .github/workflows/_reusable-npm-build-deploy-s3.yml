@@ -36,7 +36,7 @@ jobs:
         run: |
           cd ./packages/mfe-${{inputs.mfe_name}}
           npm ci
-          npm run build
+          npm run build --base=https://d1wub6s1ympoc5.cloudfront.net/mfe/${{inputs.mfe_name}}/
 
       - name: Upload build artifact
         if: steps.changes.outputs.mfe == 'true'
@@ -58,5 +58,5 @@ jobs:
         if: steps.changes.outputs.mfe == 'true'
         run: |
           aws s3 sync ./packages/mfe-${{inputs.mfe_name}}/dist s3://${{vars.S3_BUCKET_NAME}}/mfe/${{inputs.mfe_name}} --delete
-          aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/mfe/${{inputs.mfe_name}}*"
+          aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/mfe/${{inputs.mfe_name}}/*"
 
