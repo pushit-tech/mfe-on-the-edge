@@ -25,4 +25,5 @@ jobs:
           aws-region: us-east-1
       - name: Uploading Static pages to S3
         run: |
-          aws s3 sync ./packages/pages s3://$S3_BUCKET_NAME/pages/ --delete
+          aws s3 sync ./packages/pages s3://${{vars.S3_BUCKET_NAME}}/pages/ --delete
+          aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/${{vars.S3_BUCKET_NAME}}pages/*"

@@ -10,8 +10,6 @@ on:
 
 jobs:
   upload-to-s3:
-    env:
-        S3_BUCKET_NAME: "us-east-1-856716035894-mfe-on-the-edge" 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -25,4 +23,5 @@ jobs:
     - name: Uploading catalog to S3
       run: |
         cd ./packages/routing-edge/src/routes
-        aws s3 cp ./frontend-catalog.json s3://$S3_BUCKET_NAME/routes/
+        aws s3 cp ./frontend-catalog.json s3://${{vars.S3_BUCKET_NAME}}/routes/
+        aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES}} --paths "/${{vars.S3_BUCKET_NAME}}/routes/*"

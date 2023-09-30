@@ -15,8 +15,6 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    env:
-      S3_BUCKET_NAME: "us-east-1-856716035894-mfe-on-the-edge"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -59,4 +57,6 @@ jobs:
       - name: Uploading Static pages to S3
         if: steps.changes.outputs.mfe == 'true'
         run: |
-          aws s3 sync ./packages/mfe-${{inputs.mfe_name}}/dist s3://$S3_BUCKET_NAME/mfe/${{inputs.mfe_name}} --delete
+          aws s3 sync ./packages/mfe-${{inputs.mfe_name}}/dist s3://${{vars.S3_BUCKET_NAME}}/mfe/${{inputs.mfe_name}} --delete
+          aws cloudfront create-invalidation --distribution-id ${{vars.CF_DISTRIBUTION_RESOURCES_RESOURCES}} --paths "/${{vars.S3_BUCKET_NAME}}/mfe/${{inputs.mfe_name}}*"
+
