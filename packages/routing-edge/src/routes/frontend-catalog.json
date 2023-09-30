@@ -1,18 +1,18 @@
 {
-  "/mfe1": {
+  "/edge/vanilla": {
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
     "uri": "/pages/mfe1/index.html"
   },
-  "/product-detail2": {
+  "/edge/rick-morty": {
+    "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
+    "uri": "/mfe/rick-morty/index.html"
+  },
+  "/edge/pokemon": {
+    "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
+    "uri": "/mfe/pokemon/index.html"
+  },
+  "/": {
     "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
     "uri": "/pages/mfe2/index.html"
-  },
-  "/mfe3": {
-    "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
-    "uri": "/pages/mfe3/index.html"
-  },
-  "/mfe5": {
-    "originDomain": "d1wub6s1ympoc5.cloudfront.net", 
-    "uri": "/pages/mfe4/index.html"
   }
 }
