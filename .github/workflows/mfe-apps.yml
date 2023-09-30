@@ -24,3 +24,8 @@ jobs:
     with:
       mfe_name: "shell"
     secrets: inherit
+  store:
+      uses: "./.github/workflows/_reusable-npm-build-deploy-s3.yml"
+      with:
+        mfe_name: "store"
+      secrets: inherit

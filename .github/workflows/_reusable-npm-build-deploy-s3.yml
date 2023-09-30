@@ -36,7 +36,7 @@ jobs:
         run: |
           cd ./packages/mfe-${{inputs.mfe_name}}
           npm ci
-          npm run build --base=https://d1wub6s1ympoc5.cloudfront.net/mfe/${{inputs.mfe_name}}/
+          BASE_PATH=https://d1wub6s1ympoc5.cloudfront.net/mfe/${{inputs.mfe_name}}/ npm run build 
 
       - name: Upload build artifact
         if: steps.changes.outputs.mfe == 'true'
